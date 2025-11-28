@@ -1,0 +1,198 @@
+/* ----------- GENERAL ----------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s ease, color 0.4s ease;
+    min-height: 100vh;
+}
+
+:root {
+    --bg: #fff7e6;
+    --text: #2c2c2c;
+    --card-bg: #ffffff;
+    --primary: #f4a460;
+    --primary-hover: #d48838;
+    --shadow: rgba(0,0,0,0.1);
+}
+
+body.dark-mode {
+    --bg: #1b1b1b;
+    --text: #ffffff;
+    --card-bg: #2a2a2a;
+    --shadow: rgba(0,0,0,0.4);
+}
+
+/* ----------- SETTINGS ----------- */
+#settings-icon {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+#settings-icon:hover { transform: rotate(90deg); }
+
+#settings-menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
+    width: 220px;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#settings-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.setting-row p {
+    font-size: 14px;
+}
+
+/* Toggle Switch */
+.switch { position: relative; width: 50px; height: 26px; }
+.switch input { display: none; }
+.slider {
+    position: absolute; cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.3s; border-radius: 26px;
+}
+.slider:before {
+    position: absolute; content: "";
+    height: 20px; width: 20px; left: 3px; bottom: 3px;
+    background-color: white;
+    transition: 0.3s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(24px); }
+
+#language-select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: var(--card-bg);
+    color: var(--text);
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* ----------- SCREENS ----------- */
+.screen {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(40px);
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.screen.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+    position: relative;
+}
+
+h1 { font-size: 2.5em; margin-bottom: 30px; color: var(--primary); }
+h2 { font-size: 1.8em; margin: 30px 0 20px; }
+
+/* ----------- BUTTONS ----------- */
+.btn, .option-btn, .category-btn {
+    padding: 14px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: var(--primary);
+    color: white;
+    transition: all 0.3s ease;
+    width: calc(100% - 20px);
+    max-width: 300px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+.btn:hover, .option-btn:hover, .category-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+.btn:active, .option-btn:active, .category-btn:active { transform: translateY(0); }
+.back-btn { background-color: #888; margin-top: 30px; }
+.back-btn:hover { background-color: #666; }
+
+/* Recipe */
+.recipe-img {
+    width: 100%; max-width: 400px; height: auto;
+    border-radius: 12px; margin: 20px auto;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+#recipe-content {
+    text-align: left;
+    max-width: 600px;
+    margin: 20px auto;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
+    line-height: 1.8;
+}
+#recipe-content strong {
+    color: var(--primary);
+    font-size: 1.1em;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.4em; }
+    .btn, .option-btn, .category-btn { font-size: 16px; padding: 12px 20px; }
+    #recipe-content { padding: 20px; }
+}
+@media (min-width: 600px) {
+    .btn, .option-btn, .category-btn { display: inline-block; width: auto; min-width: 250px; }
+}
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0; transform:scale(0.9);} to {opacity:1; transform:scale(1);} }
+.fade-in { animation: fadeIn 0.5s ease; }

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Recipe App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Settings -->
+    <div id="settings-icon">⚙️</div>
+    <div id="settings-menu">
+        <h3>Settings</h3>
+        <div class="setting-row">
+            <p>Dark Mode</p>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div class="setting-row">
+            <label style="width: 100%;">
+                <p style="margin-bottom: 5px;">Language:</p>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </label>
+        </div>
+        <p class="copyright">© 2025 Cookie Recipe App</p>
+    </div>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+        <h1>🍪 Cookie Recipe App</h1>
+        <p style="font-size: 1.2em; margin-bottom: 30px; opacity: 0.8;">Delicious recipes in minutes</p>
+        <button id="start-btn" class="btn">Get Started</button>
+    </div>
+
+    <!-- Options Screen -->
+    <div id="options-screen" class="screen">
+        <h2>⏱️ Quick Recipes</h2>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="🔍 Search recipes...">
+        </div>
+        <div id="time-buttons">
+            <button class="option-btn" data-time="10">Under 10 Minutes</button>
+            <button class="option-btn" data-time="20">Under 20 Minutes</button>
+            <button class="option-btn" data-time="30">Under 30 Minutes</button>
+        </div>
+        <h2>📂 By Category</h2>
+        <div id="category-buttons">
+            <button class="category-btn" data-category="chocolate">🍫 Chocolate Chip</button>
+            <button class="category-btn" data-category="oatmeal">🌾 Oatmeal</button>
+            <button class="category-btn" data-category="sugar">🍬 Sugar Cookies</button>
+            <button class="category-btn" data-category="peanut">🥜 Peanut Butter</button>
+        </div>
+        <button class="btn back-btn" id="back-to-start">← Back</button>
+    </div>
+
+    <!-- Recipe Screen -->
+    <div id="recipe-screen" class="screen">
+        <h2 id="recipe-title"></h2>
+        <img id="recipe-img" class="recipe-img fade-in" alt="Recipe">
+        <div id="recipe-content" class="fade-in"></div>
+        <button class="btn back-btn" id="back-to-options">← Back to Recipes</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
